@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <% include ./partials/head %>
+    <title>Bakery-Menu</title>
+</head>
+
+<body>	
+    <% include ./partials/navbar %>
+    <!-- start banner Area -->
+    <section class="banner-area relative about-banner" id="home">	
+        <div class="overlay overlay-bg"></div>
+        <div class="container">				
+            <div class="row d-flex align-items-center justify-content-center">
+                <div class="about-content col-lg-12">
+                    <h1 class="text-white">
+                        Menu List				
+                    </h1>	
+                    <p class="text-white link-nav"><a href="/">Home </a>  <span class="lnr lnr-arrow-right"></span>  <a href="menu.html"> Menu</a></p>
+                </div>	
+            </div>
+        </div>
+    </section>
+    <!-- End banner Area -->	
+
+    <!-- Start menu-list Area -->
+    <section class="menu-list-area section-gap">
+          <div class="row">
+              <% alldocs.forEach(function(doc) { %>
+                <div class="col-lg-3 col-md-6">
+                  <div class="card mb-2">
+                        <a href="uploads/<%= doc.filename%>"><img src="uploads/<%= doc.filename%>"  width="290" height="200" alt="" class="img-responsive"></a>
+                        <b><span><%= doc.description%></span></b>
+                    </div>
+                </div>
+                <!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="text-align: left;">Product</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+          <a href="uploads/<%= doc.filename%>">
+        <img src="uploads/<%= doc.filename%>"  width="200" height="200" alt="" class="img-responsive">
+        </a>
+      </div>
+      <div class="modal-footer">
+          <b><span style="text-align: left;"><%= doc.description%></span></b>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+                
+              <% }); %>
+              </div>
+    </section>
+    <!-- End menu-list Area -->						
+    
+    <% include ./partials/footer %>
+</body>
+</html>
